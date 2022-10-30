@@ -8,8 +8,11 @@ import com.example.fongfood.services.ICategoryService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CategoryService implements ICategoryService {
+
   @Autowired
   private CategoryRepo categoryRepo;
 
