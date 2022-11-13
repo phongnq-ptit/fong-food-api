@@ -1,5 +1,6 @@
 package com.example.fongfood.services.impl;
 
+import com.example.fongfood.exceptions.ResponseError;
 import com.example.fongfood.models.ResponseObject;
 import com.example.fongfood.models.entities.CategoryEntity;
 import com.example.fongfood.models.entities.ImageEntity;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProductService implements IProductService {
+
   @Autowired
   private ProductRepo productRepo;
 
@@ -74,7 +76,30 @@ public class ProductService implements IProductService {
 
   @Override
   public ResponseObject<ProductEntity> get(Long id) {
-    return null;
+    try {
+      Optional<ProductEntity> product = productRepo.findById(id);
+
+      if (!product.isPresent()) {
+        throw new ResponseError(404, "Cannot find id " + id + " !");
+      }
+
+      List<ImageEntity> images = uploadRepo.findAllByProductId(product.get().getId());
+      Optional<CategoryEntity> category = categoryRepo.findById(product.get().getCategoryId());
+      product.get().setImages(images);
+      product.get().setCategory(category.get());
+
+      return new ResponseObject<ProductEntity>(
+          200,
+          "Get product " + id + " successful!",
+          product.get()
+      );
+    } catch (ResponseError e) {
+      return new ResponseObject<ProductEntity>(
+          e.getStatus(),
+          e.getMessage(),
+          null
+      );
+    }
   }
 
   @Override
