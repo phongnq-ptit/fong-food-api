@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "tbl_users")
@@ -41,6 +42,7 @@ public class UserEntity {
   private UserRole role;
 
   @OneToOne
+  @Transient
   private ImageEntity avatar;
 
   public UserEntity() {

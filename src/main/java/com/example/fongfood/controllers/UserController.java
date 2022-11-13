@@ -3,7 +3,6 @@ package com.example.fongfood.controllers;
 import com.example.fongfood.models.ResponseObject;
 import com.example.fongfood.models.entities.UserEntity;
 import com.example.fongfood.models.enums.UserRole;
-import com.example.fongfood.repositories.UserRepo;
 import com.example.fongfood.services.impl.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

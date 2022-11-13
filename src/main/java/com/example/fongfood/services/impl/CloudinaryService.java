@@ -42,7 +42,7 @@ public class CloudinaryService implements ICloudinaryService {
       Long productId
   ) {
     try {
-      if (userId == -1 && userId == -1) {
+      if (userId == -1 && productId == -1) {
         throw new ResponseError(400,
             "Need to specify the object to upload the image! (userId or productId is require)");
       }
@@ -115,7 +115,7 @@ public class CloudinaryService implements ICloudinaryService {
 
       Map result = cloudinary.uploader().destroy("fong-food/" + publicId, ObjectUtils.emptyMap());
 
-      if (result.get("result").toString() != "ok"){
+      if (!result.get("result").toString().equalsIgnoreCase("ok")) {
         throw new ResponseError(400, "Delete image unsuccessful!");
       }
 
