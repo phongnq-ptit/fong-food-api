@@ -83,6 +83,8 @@ public class CloudinaryService implements ICloudinaryService {
         newImage.setProductId(productId);
       }
 
+      file.delete();
+
       return new ResponseObject<ImageEntity>(
           200,
           "Upload image successful!",
