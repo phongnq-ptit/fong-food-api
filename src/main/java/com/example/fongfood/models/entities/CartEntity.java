@@ -2,6 +2,7 @@ package com.example.fongfood.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,7 @@ public class CartEntity {
   private Long id;
   private Long userId;
   private Long productId;
+  @Column(columnDefinition = "int default 1")
   private int quantity;
   @Transient
   @ManyToOne
