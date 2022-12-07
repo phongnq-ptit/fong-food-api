@@ -30,6 +30,17 @@ public class ProductEntity {
   @Transient
   private List<ImageEntity> images;
 
+  @Transient
+  private String image;
+
+  public String getImage() {
+    return image;
+  }
+
+  public void setImage(String image) {
+    this.image = image;
+  }
+
   public ProductEntity() {
   }
 
@@ -93,10 +104,12 @@ public class ProductEntity {
     this.category = category;
   }
 
+  @JsonIgnore
   public List<ImageEntity> getImages() {
     return images;
   }
 
+  @JsonProperty
   public void setImages(List<ImageEntity> images) {
     this.images = images;
   }

@@ -38,6 +38,7 @@ public class ProductService implements IProductService {
             List<ImageEntity> images = uploadRepo.findAllByProductId(row.getId());
             row.setImages(images);
             row.setCategory(_category.get());
+            row.setImage(images.get(0).getUrl());
             return row;
           }
       ).collect(Collectors.toList());
@@ -49,6 +50,7 @@ public class ProductService implements IProductService {
               List<ImageEntity> images = uploadRepo.findAllByProductId(row.getId());
               row.setImages(images);
               row.setCategory(_category.get());
+              row.setImage(images.get(0).getUrl());
               return row;
             }
         ).collect(Collectors.toList());
@@ -59,6 +61,7 @@ public class ProductService implements IProductService {
               List<ImageEntity> images = uploadRepo.findAllByProductId(row.getId());
               row.setImages(images);
               row.setCategory(_category.get());
+              row.setImage(images.get(0).getUrl());
               return row;
             }
         ).collect(Collectors.toList());
@@ -87,6 +90,7 @@ public class ProductService implements IProductService {
       Optional<CategoryEntity> category = categoryRepo.findById(product.get().getCategoryId());
       product.get().setImages(images);
       product.get().setCategory(category.get());
+      product.get().setImage(images.get(0).getUrl());
 
       return new ResponseObject<ProductEntity>(
           200,
