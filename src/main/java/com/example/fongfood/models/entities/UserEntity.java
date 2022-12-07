@@ -87,12 +87,10 @@ public class UserEntity {
     this.email = email;
   }
 
-  @JsonIgnore
   public String getPassword() {
     return password;
   }
 
-  @JsonProperty
   public void setPassword(String password) {
     this.password = password;
   }
