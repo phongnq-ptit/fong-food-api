@@ -20,7 +20,7 @@ public class ProductEntity {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
   private String name;
-  private int price;
+  private String price;
   private String description;
   private Long categoryId;
   @ManyToOne
@@ -44,7 +44,7 @@ public class ProductEntity {
   public ProductEntity() {
   }
 
-  public ProductEntity(Long id, String name, int price, String description,
+  public ProductEntity(Long id, String name, String price, String description,
       CategoryEntity category, List<ImageEntity> images) {
     this.id = id;
     this.name = name;
@@ -70,11 +70,11 @@ public class ProductEntity {
     this.name = name;
   }
 
-  public int getPrice() {
+  public String getPrice() {
     return price;
   }
 
-  public void setPrice(int price) {
+  public void setPrice(String price) {
     this.price = price;
   }
 
